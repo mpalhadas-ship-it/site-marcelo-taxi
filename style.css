@@ -40,6 +40,12 @@ header {
   border-bottom: 1px solid rgba(0,184,160,0.15);
 }
 
+.header-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .header-brand h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 26px;
@@ -301,7 +307,7 @@ nav a:hover { color: var(--teal); }
 /* ── SOBRE ── */
 #sobre .sobre-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 60px;
   align-items: center;
 }
@@ -311,38 +317,6 @@ nav a:hover { color: var(--teal); }
   line-height: 1.8;
   color: var(--gray);
   margin-bottom: 16px;
-}
-
-.stat-box {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-.stat {
-  background: rgba(0,184,160,0.1);
-  border: 1px solid rgba(0,184,160,0.3);
-  border-radius: 8px;
-  padding: 20px 24px;
-  flex: 1;
-  min-width: 120px;
-  text-align: center;
-}
-
-.stat strong {
-  display: block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 36px;
-  font-weight: 900;
-  color: var(--teal);
-}
-
-.stat span {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 /* ── VEICULO ── */
