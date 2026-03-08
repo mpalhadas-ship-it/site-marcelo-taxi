@@ -2,6 +2,7 @@ const ORIGEM_LAT = -21.794291681271392;
 const ORIGEM_LNG = -43.36389768151346;
 
 let distanciaKmGlobal = null;
+let debounceTimer = null;
 
 function arredondarParaMultiploDe10(valor) {
   if (valor < 10) return 10;
@@ -15,51 +16,53 @@ function buscarTempo() {
 
   resultadoDiv.innerHTML = "";
   distanciaKmGlobal = null;
+  tempoDiv.innerHTML = "";
 
-  if (destino.length < 3) {
-    tempoDiv.innerHTML = "";
-    return;
-  }
+  clearTimeout(debounceTimer);
 
-  tempoDiv.innerHTML = '<span class="calc-loading">⏳ Buscando...</span>';
+  if (destino.length < 4) return;
 
-  const origem = new google.maps.LatLng(ORIGEM_LAT, ORIGEM_LNG);
-  const service = new google.maps.DistanceMatrixService();
+  debounceTimer = setTimeout(function () {
+    tempoDiv.innerHTML = '<span class="calc-loading">⏳ Buscando...</span>';
 
-  service.getDistanceMatrix(
-    {
-      origins: [origem],
-      destinations: [destino],
-      travelMode: google.maps.TravelMode.DRIVING,
-      language: "pt-BR",
-    },
-    function (response, status) {
-      if (status !== "OK") {
-        tempoDiv.innerHTML = "";
-        return;
-      }
+    const origem = new google.maps.LatLng(ORIGEM_LAT, ORIGEM_LNG);
+    const service = new google.maps.DistanceMatrixService();
 
-      const element = response.rows[0].elements[0];
+    service.getDistanceMatrix(
+      {
+        origins: [origem],
+        destinations: [destino],
+        travelMode: google.maps.TravelMode.DRIVING,
+        language: "pt-BR",
+      },
+      function (response, status) {
+        if (status !== "OK") {
+          tempoDiv.innerHTML = "";
+          return;
+        }
 
-      if (element.status !== "OK") {
-        tempoDiv.innerHTML = "";
-        return;
-      }
+        const element = response.rows[0].elements[0];
 
-      distanciaKmGlobal = element.distance.value / 1000;
-      const duracao = element.duration.text;
+        if (element.status !== "OK") {
+          tempoDiv.innerHTML = "";
+          return;
+        }
 
-      tempoDiv.innerHTML = `
-        <div class="calc-tempo-box">
-          <div class="calc-info-row">
-            <span>⏱️ Tempo estimado</span>
-            <strong>${duracao}</strong>
+        distanciaKmGlobal = element.distance.value / 1000;
+        const duracao = element.duration.text;
+
+        tempoDiv.innerHTML = `
+          <div class="calc-tempo-box">
+            <div class="calc-info-row">
+              <span>⏱️ Tempo estimado</span>
+              <strong>${duracao}</strong>
+            </div>
+            <p class="calc-tempo-obs">Tempo estimado com base na distância e condições da via.</p>
           </div>
-          <p class="calc-tempo-obs">Tempo estimado com base na distância e condições da via.</p>
-        </div>
-      `;
-    }
-  );
+        `;
+      }
+    );
+  }, 1000);
 }
 
 function exibirValor() {
