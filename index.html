@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -110,6 +109,24 @@
 
 <hr class="divider">
 
+<!-- ── CALCULADORA ── -->
+<section id="calculadora" class="section">
+  <h2>Simule sua viagem</h2>
+  <div class="calc-wrapper">
+    <div class="calc-card">
+      <div class="calc-input-wrap">
+        <label>Cálculos válidos para viagem intermunicipal</label>
+        <input type="text" id="destino-texto" placeholder="Qual a cidade de destino?" class="calc-input" oninput="buscarTempo()">
+      </div>
+      <div id="tempo-estimado"></div>
+      <button class="calc-btn" onclick="exibirValor()">Exibir valor</button>
+      <div id="resultado-calc"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- ── PAGAMENTO ── -->
 <section id="pagamento" class="section">
   <h2>Formas de pagamento</h2>
@@ -139,6 +156,7 @@
   <p>WhatsApp: <strong>(32) 99116-1391</strong></p>
 </footer>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6M_XhgT-xqltyObVbmanmzSiqCH_AlD0&libraries=places"></script>
 <script src="script.js"></script>
 </body>
 </html>
