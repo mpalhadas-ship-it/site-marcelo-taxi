@@ -1,4 +1,5 @@
 const cidadesFixas = [
+  { nomes: ["aeroporto zona da mata", "iza", "aeroporto iza", "aeroporto itamar franco", "goiana", "goianá", "aeroporto de goiana", "aeroporto de goianá", "aeroporto goiana"], especial: { avista: 200, parcelado: 220, parcela: 22 } },
   { nomes: ["santos dumont"], km: 43 },
   { nomes: ["lima duarte"], km: 60 },
   { nomes: ["ubá", "uba"], km: 65 },
@@ -75,8 +76,6 @@ const cidadesFixas = [
   { nomes: ["guarulhos"], km: 490 },
   { nomes: ["montes claros"], km: 495 },
   { nomes: ["vitória da conquista", "vitoria da conquista"], km: 498 },
-  { nomes: ["aeroporto zona da mata", "iza", "aeroporto iza", "aeroporto itamar franco"], km: 50 },
-  { nomes: ["aeroporto goiana", "goiana", "goianá"], km: 50 },
   { nomes: ["bicas"], km: 50 },
   { nomes: ["rio novo"], km: 60 },
   { nomes: ["são joão nepomuceno", "sao joao nepomuceno"], km: 70 },
@@ -107,9 +106,19 @@ function exibirValor() {
   const cidadeFixa = buscarCidadeFixa(destino);
 
   if (cidadeFixa) {
-    const valorTotal = arredondarParaMultiploDe10(cidadeFixa.km * 4);
-    const valorVista = arredondarParaMultiploDe10(valorTotal * 0.9);
-    const valorParcela = valorTotal / 10;
+    let valorTotal, valorVista, valorParcela, parcelaDisplay;
+
+    if (cidadeFixa.especial) {
+      valorVista = cidadeFixa.especial.avista;
+      valorTotal = cidadeFixa.especial.parcelado;
+      valorParcela = cidadeFixa.especial.parcela;
+      parcelaDisplay = `R$ ${valorParcela.toFixed(2).replace('.', ',')}`;
+    } else {
+      valorTotal = arredondarParaMultiploDe10(cidadeFixa.km * 4);
+      valorVista = arredondarParaMultiploDe10(valorTotal * 0.9);
+      valorParcela = valorTotal / 10;
+      parcelaDisplay = `R$ ${valorParcela.toFixed(2).replace('.', ',')}`;
+    }
 
     resultadoDiv.innerHTML = `
       <div class="calc-sucesso">
@@ -123,7 +132,7 @@ function exibirValor() {
         <div class="calc-ou">ou</div>
         <div class="calc-opcao parcelado">
           <div class="calc-opcao-titulo">💳 Parcelado</div>
-          <div class="calc-opcao-valor">10x de <span>R$ ${valorParcela.toFixed(2).replace('.', ',')}</span></div>
+          <div class="calc-opcao-valor">10x de <span>${parcelaDisplay}</span></div>
           <div class="calc-opcao-total">Total: R$ ${valorTotal},00</div>
           <div class="calc-pedagio-destaque">⚠️ + pedágios, se houver</div>
         </div>
