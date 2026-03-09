@@ -109,7 +109,7 @@ function exibirValor() {
   if (cidadeFixa) {
     const valorTotal = arredondarParaMultiploDe10(cidadeFixa.km * 4);
     const valorVista = arredondarParaMultiploDe10(valorTotal * 0.9);
-    const valorParcela = arredondarParaMultiploDe10(valorTotal / 10);
+    const valorParcela = valorTotal / 10;
 
     resultadoDiv.innerHTML = `
       <div class="calc-sucesso">
@@ -123,7 +123,7 @@ function exibirValor() {
         <div class="calc-ou">ou</div>
         <div class="calc-opcao parcelado">
           <div class="calc-opcao-titulo">💳 Parcelado</div>
-          <div class="calc-opcao-valor">10x de <span>R$ ${valorParcela},00</span></div>
+          <div class="calc-opcao-valor">10x de <span>R$ ${valorParcela.toFixed(2).replace('.', ',')}</span></div>
           <div class="calc-opcao-total">Total: R$ ${valorTotal},00</div>
           <div class="calc-pedagio-destaque">⚠️ + pedágios, se houver</div>
         </div>
