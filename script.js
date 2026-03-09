@@ -114,18 +114,18 @@ function exibirValor() {
     resultadoDiv.innerHTML = `
       <div class="calc-sucesso">
         <hr class="calc-divider">
-        <div class="calc-opcao parcelado">
-          <div class="calc-opcao-titulo">💳 Parcelado</div>
-          <div class="calc-opcao-valor">10x de <span>R$ ${valorParcela},00</span></div>
-          <div class="calc-opcao-total">Total: R$ ${valorTotal},00</div>
-          <div class="calc-pedagio">+ pedágios, se houver</div>
-        </div>
-        <div class="calc-ou">ou</div>
         <div class="calc-opcao avista">
           <div class="calc-opcao-titulo">💰 À vista</div>
           <div class="calc-opcao-valor"><span>R$ ${valorVista},00</span></div>
           <div class="calc-opcao-economia">Economia de R$ ${valorTotal - valorVista},00 (10% de desconto)</div>
-          <div class="calc-pedagio">+ pedágios, se houver</div>
+          <div class="calc-pedagio-destaque">⚠️ + pedágios, se houver</div>
+        </div>
+        <div class="calc-ou">ou</div>
+        <div class="calc-opcao parcelado">
+          <div class="calc-opcao-titulo">💳 Parcelado</div>
+          <div class="calc-opcao-valor">10x de <span>R$ ${valorParcela},00</span></div>
+          <div class="calc-opcao-total">Total: R$ ${valorTotal},00</div>
+          <div class="calc-pedagio-destaque">⚠️ + pedágios, se houver</div>
         </div>
       </div>
     `;
