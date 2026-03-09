@@ -2,13 +2,16 @@
 
 :root {
   --teal: #FFE600;
+  --teal-dark: #ccb800;
   --navy: #1a2a3a;
   --magenta: #6b7280;
+  --magenta-hover: #4b5563;
   --white: #ffffff;
   --light: #f0f4f8;
   --gray: #cbd5e1;
   --text-muted: #94a3b8;
   --baltic: #1f6b8e;
+  --baltic-hover: #175a78;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -121,11 +124,11 @@ nav a:hover { color: var(--teal); }
 .ps {
   font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(13px, 1.3vw, 18px);
   color: #ffffff;
   letter-spacing: 1px;
   text-transform: none;
-  opacity: 0.85;
+  opacity: 0.7;
   margin-top: 4px;
 }
 
@@ -249,6 +252,27 @@ nav a:hover { color: var(--teal); }
   align-items: start;
 }
 
+.calc-jf-titulo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.calc-jf-titulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: var(--teal);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
 .calc-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,230,0,0.2);
@@ -258,7 +282,7 @@ nav a:hover { color: var(--teal); }
 
 .calc-jf-card {
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,230,0,0.2);
   border-radius: 12px;
   padding: 36px 32px;
   display: flex;
@@ -314,7 +338,7 @@ nav a:hover { color: var(--teal); }
 
 .calc-btn:hover { background: #1ebe5d; }
 
-.calc-erro { color: #f87171; font-size: 14px; }
+.calc-erro { color: #f87171; font-size: 14px; margin-top: 10px; display: block; }
 
 .calc-sucesso {
   margin-top: 20px;
