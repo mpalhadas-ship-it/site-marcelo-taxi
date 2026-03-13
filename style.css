@@ -415,9 +415,36 @@ nav a:hover { color: var(--teal); }
 /* ── HERO PHOTO ── */
 .hero-photo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   margin-top: 60px;
+  gap: 16px;
+}
+
+.hero-tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.hero-tagline-nome {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: 6px;
+  color: #FFE600;
+  text-transform: uppercase;
+}
+
+.hero-tagline-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(13px, 1.2vw, 16px);
+  color: var(--gray);
+  font-style: italic;
+  max-width: 340px;
+  line-height: 1.5;
 }
 
 .hero-photo img {
