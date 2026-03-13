@@ -419,15 +419,14 @@ nav a:hover { color: var(--teal); }
   justify-content: center;
   align-items: center;
   margin-top: 60px;
-  gap: 16px;
+  gap: 0;
 }
 
 .hero-tagline {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 6px;
+  margin-top: 8px;
 }
 
 .hero-tagline-nome {
@@ -440,10 +439,10 @@ nav a:hover { color: var(--teal); }
 
 .hero-tagline-sub {
   font-family: 'Barlow', sans-serif;
-  font-size: clamp(13px, 1.2vw, 16px);
+  font-size: clamp(15px, 1.4vw, 19px);
   color: var(--gray);
-  font-style: italic;
-  max-width: 340px;
+  font-style: normal;
+  max-width: 420px;
   line-height: 1.5;
 }
 
